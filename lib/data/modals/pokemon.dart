@@ -60,6 +60,8 @@ class Pokemon {
   String? reason;
   @HiveField(26)
   String? baseExp;
+  @HiveField(27)
+  String? pokemonEnemy;
 
   Pokemon({
     this.name,
@@ -89,6 +91,7 @@ class Pokemon {
     this.evolvedFrom,
     this.reason,
     this.baseExp,
+    this.pokemonEnemy
   });
 
   factory Pokemon.fromJson(Map<String, dynamic> json) =>

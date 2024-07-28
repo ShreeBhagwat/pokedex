@@ -44,13 +44,14 @@ class PokemonAdapter extends TypeAdapter<Pokemon> {
       evolvedFrom: fields[24] as String?,
       reason: fields[25] as String?,
       baseExp: fields[26] as String?,
+      pokemonEnemy: fields[27] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Pokemon obj) {
     writer
-      ..writeByte(27)
+      ..writeByte(28)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -104,7 +105,9 @@ class PokemonAdapter extends TypeAdapter<Pokemon> {
       ..writeByte(25)
       ..write(obj.reason)
       ..writeByte(26)
-      ..write(obj.baseExp);
+      ..write(obj.baseExp)
+      ..writeByte(27)
+      ..write(obj.pokemonEnemy);
   }
 
   @override
@@ -158,6 +161,7 @@ Pokemon _$PokemonFromJson(Map<String, dynamic> json) => Pokemon(
       evolvedFrom: json['evolvedFrom'] as String?,
       reason: json['reason'] as String?,
       baseExp: json['baseExp'] as String?,
+      pokemonEnemy: json['pokemonEnemy'] as String?,
     );
 
 Map<String, dynamic> _$PokemonToJson(Pokemon instance) => <String, dynamic>{
@@ -188,4 +192,5 @@ Map<String, dynamic> _$PokemonToJson(Pokemon instance) => <String, dynamic>{
       'evolvedFrom': instance.evolvedFrom,
       'reason': instance.reason,
       'baseExp': instance.baseExp,
+      'pokemonEnemy': instance.pokemonEnemy,
     };
